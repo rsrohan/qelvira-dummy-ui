@@ -27,13 +27,13 @@ export default function Marketplace() {
   return (
     <Layout title="Marketplace" subtitle="Order supplies directly from Qelvira">
       <div className="flex flex-wrap items-center gap-3">
-        <div className="flex items-center gap-2 rounded-lg border border-slate-300 px-3 py-2 text-sm text-slate-500 w-64">
+        <div className="flex items-center gap-2 rounded-lg border border-slate-300 px-3 py-2 text-sm text-slate-500 w-full sm:w-64">
           <Search size={15} />
           <input
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="Search products"
-            className="flex-1 outline-none placeholder:text-slate-400 text-slate-700"
+            className="flex-1 min-w-0 outline-none placeholder:text-slate-400 text-slate-700"
           />
         </div>
         <div className="flex items-center gap-1 overflow-x-auto">

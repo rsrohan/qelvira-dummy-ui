@@ -75,30 +75,32 @@ export default function Dashboard() {
               View all <ArrowRight size={12} />
             </Link>
           </div>
-          <table className="w-full text-sm">
-            <thead>
-              <tr className="text-left text-xs text-slate-500 border-b border-slate-100">
-                <th className="px-5 py-2.5 font-medium">Order ID</th>
-                <th className="px-5 py-2.5 font-medium">Date</th>
-                <th className="px-5 py-2.5 font-medium">Items</th>
-                <th className="px-5 py-2.5 font-medium">Total</th>
-                <th className="px-5 py-2.5 font-medium">Status</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-slate-100">
-              {orders.slice(0, 4).map((o) => (
-                <tr key={o.id}>
-                  <td className="px-5 py-3 font-medium text-slate-900">{o.id}</td>
-                  <td className="px-5 py-3 text-slate-500">{o.date}</td>
-                  <td className="px-5 py-3 text-slate-500">{o.items}</td>
-                  <td className="px-5 py-3 text-slate-900">₹{o.total.toLocaleString("en-IN")}</td>
-                  <td className="px-5 py-3">
-                    <Badge color={statusColor[o.status]}>{o.status}</Badge>
-                  </td>
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm">
+              <thead>
+                <tr className="text-left text-xs text-slate-500 border-b border-slate-100">
+                  <th className="px-5 py-2.5 font-medium">Order ID</th>
+                  <th className="px-5 py-2.5 font-medium">Date</th>
+                  <th className="px-5 py-2.5 font-medium">Items</th>
+                  <th className="px-5 py-2.5 font-medium">Total</th>
+                  <th className="px-5 py-2.5 font-medium">Status</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody className="divide-y divide-slate-100">
+                {orders.slice(0, 4).map((o) => (
+                  <tr key={o.id}>
+                    <td className="px-5 py-3 font-medium text-slate-900 whitespace-nowrap">{o.id}</td>
+                    <td className="px-5 py-3 text-slate-500 whitespace-nowrap">{o.date}</td>
+                    <td className="px-5 py-3 text-slate-500 whitespace-nowrap">{o.items}</td>
+                    <td className="px-5 py-3 text-slate-900 whitespace-nowrap">₹{o.total.toLocaleString("en-IN")}</td>
+                    <td className="px-5 py-3 whitespace-nowrap">
+                      <Badge color={statusColor[o.status]}>{o.status}</Badge>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
 
         <div className="rounded-xl border border-brand-200 bg-brand-50 p-5">

@@ -101,13 +101,13 @@ function SuppliesTab() {
   return (
     <div className="space-y-4">
       <div className="flex flex-wrap items-center gap-3">
-        <div className="flex items-center gap-2 rounded-lg border border-slate-300 px-3 py-2 text-sm text-slate-500 w-64">
+        <div className="flex items-center gap-2 rounded-lg border border-slate-300 px-3 py-2 text-sm text-slate-500 w-full sm:w-64">
           <Search size={15} />
           <input
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="Search item or SKU"
-            className="flex-1 outline-none placeholder:text-slate-400 text-slate-700"
+            className="flex-1 min-w-0 outline-none placeholder:text-slate-400 text-slate-700"
           />
         </div>
         <div className="flex items-center gap-1 overflow-x-auto">
@@ -128,7 +128,7 @@ function SuppliesTab() {
         </button>
       </div>
 
-      <div className="rounded-xl border border-slate-200 bg-white overflow-hidden">
+      <div className="rounded-xl border border-slate-200 bg-white overflow-x-auto">
         <table className="w-full text-sm">
           <thead>
             <tr className="text-left text-xs text-slate-500 border-b border-slate-100 bg-slate-50">
@@ -146,17 +146,17 @@ function SuppliesTab() {
               const low = item.stock < item.reorderAt
               return (
                 <tr key={item.id}>
-                  <td className="px-5 py-3 font-medium text-slate-900">{item.name}</td>
-                  <td className="px-5 py-3 text-slate-500">{item.sku}</td>
-                  <td className="px-5 py-3 text-slate-500">{item.category}</td>
-                  <td className="px-5 py-3">
+                  <td className="px-5 py-3 font-medium text-slate-900 whitespace-nowrap">{item.name}</td>
+                  <td className="px-5 py-3 text-slate-500 whitespace-nowrap">{item.sku}</td>
+                  <td className="px-5 py-3 text-slate-500 whitespace-nowrap">{item.category}</td>
+                  <td className="px-5 py-3 whitespace-nowrap">
                     <span className={low ? "text-rose-600 font-semibold" : "text-slate-900"}>
                       {item.stock} {item.unit}
                     </span>
                   </td>
-                  <td className="px-5 py-3 text-slate-500">{item.reorderAt}</td>
-                  <td className="px-5 py-3 text-slate-500">₹{item.price}</td>
-                  <td className="px-5 py-3">
+                  <td className="px-5 py-3 text-slate-500 whitespace-nowrap">{item.reorderAt}</td>
+                  <td className="px-5 py-3 text-slate-500 whitespace-nowrap">₹{item.price}</td>
+                  <td className="px-5 py-3 whitespace-nowrap">
                     {low ? <Badge color="red">Reorder now</Badge> : <Badge color="green">Sufficient</Badge>}
                   </td>
                 </tr>

@@ -102,7 +102,7 @@ export default function Maintenance() {
         </button>
       </div>
 
-      <div className="rounded-xl border border-slate-200 bg-white overflow-hidden">
+      <div className="rounded-xl border border-slate-200 bg-white overflow-x-auto">
         <table className="w-full text-sm">
           <thead>
             <tr className="text-left text-xs text-slate-500 border-b border-slate-100 bg-slate-50">
@@ -118,15 +118,15 @@ export default function Maintenance() {
           <tbody className="divide-y divide-slate-100">
             {filtered.map((m) => (
               <tr key={m.id}>
-                <td className="px-5 py-3 font-medium text-slate-900">{m.id}</td>
-                <td className="px-5 py-3 text-slate-700">{m.room}</td>
-                <td className="px-5 py-3 text-slate-500">{m.issue}</td>
-                <td className="px-5 py-3 text-slate-500">{m.category}</td>
-                <td className="px-5 py-3">
+                <td className="px-5 py-3 font-medium text-slate-900 whitespace-nowrap">{m.id}</td>
+                <td className="px-5 py-3 text-slate-700 whitespace-nowrap">{m.room}</td>
+                <td className="px-5 py-3 text-slate-500 whitespace-nowrap">{m.issue}</td>
+                <td className="px-5 py-3 text-slate-500 whitespace-nowrap">{m.category}</td>
+                <td className="px-5 py-3 whitespace-nowrap">
                   <Badge color={statusColor[m.priority]}>{m.priority}</Badge>
                 </td>
-                <td className="px-5 py-3 text-slate-500">{m.assignedTo}</td>
-                <td className="px-5 py-3">
+                <td className="px-5 py-3 text-slate-500 whitespace-nowrap">{m.assignedTo}</td>
+                <td className="px-5 py-3 whitespace-nowrap">
                   <Badge color={statusColor[m.status]}>{m.status}</Badge>
                 </td>
               </tr>

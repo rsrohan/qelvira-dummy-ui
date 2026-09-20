@@ -37,33 +37,35 @@ export default function Cart() {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-start">
         <div className="lg:col-span-2 rounded-xl border border-slate-200 bg-white divide-y divide-slate-100">
           {items.map((item) => (
-            <div key={item.id} className="flex items-center gap-4 p-4">
+            <div key={item.id} className="flex flex-wrap sm:flex-nowrap items-center gap-4 p-4">
               <div className="h-16 w-16 shrink-0 rounded-lg bg-slate-50 border border-slate-100" />
-              <div className="flex-1 min-w-0">
+              <div className="flex-1 min-w-[10rem]">
                 <p className="text-sm font-medium text-slate-900 truncate">{item.name}</p>
                 <p className="text-xs text-slate-500">{item.category} &middot; ₹{item.price}/{item.unit.replace(/s$/, "")}</p>
               </div>
-              <div className="flex items-center gap-2">
-                <button
-                  onClick={() => updateQty(item.id, item.qty - 10)}
-                  className="h-7 w-7 flex items-center justify-center rounded-md border border-slate-300 text-slate-500 hover:bg-slate-50"
-                >
-                  <Minus size={12} />
-                </button>
-                <span className="w-12 text-center text-sm font-medium text-slate-900">{item.qty}</span>
-                <button
-                  onClick={() => updateQty(item.id, item.qty + 10)}
-                  className="h-7 w-7 flex items-center justify-center rounded-md border border-slate-300 text-slate-500 hover:bg-slate-50"
-                >
-                  <Plus size={12} />
+              <div className="flex items-center justify-between gap-4 w-full sm:w-auto pl-20 sm:pl-0">
+                <div className="flex items-center gap-2">
+                  <button
+                    onClick={() => updateQty(item.id, item.qty - 10)}
+                    className="h-7 w-7 flex items-center justify-center rounded-md border border-slate-300 text-slate-500 hover:bg-slate-50"
+                  >
+                    <Minus size={12} />
+                  </button>
+                  <span className="w-10 text-center text-sm font-medium text-slate-900">{item.qty}</span>
+                  <button
+                    onClick={() => updateQty(item.id, item.qty + 10)}
+                    className="h-7 w-7 flex items-center justify-center rounded-md border border-slate-300 text-slate-500 hover:bg-slate-50"
+                  >
+                    <Plus size={12} />
+                  </button>
+                </div>
+                <p className="sm:w-24 text-right text-sm font-semibold text-slate-900">
+                  ₹{(item.qty * item.price).toLocaleString("en-IN")}
+                </p>
+                <button onClick={() => removeItem(item.id)} className="text-slate-400 hover:text-rose-600 shrink-0">
+                  <Trash2 size={16} />
                 </button>
               </div>
-              <p className="w-24 text-right text-sm font-semibold text-slate-900">
-                ₹{(item.qty * item.price).toLocaleString("en-IN")}
-              </p>
-              <button onClick={() => removeItem(item.id)} className="text-slate-400 hover:text-rose-600">
-                <Trash2 size={16} />
-              </button>
             </div>
           ))}
         </div>
