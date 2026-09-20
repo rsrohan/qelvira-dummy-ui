@@ -12,7 +12,7 @@ import Settings from "./pages/Settings"
 function App() {
   return (
     <CartProvider>
-      <BrowserRouter>
+      <BrowserRouter basename="/qelvira-dummy-ui">
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/" element={<Dashboard />} />
